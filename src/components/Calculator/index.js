@@ -6,6 +6,10 @@ import { theme1, theme2, theme3 } from "globalStyles";
 import { Container, Wrapper } from "./CalculatorElements";
 
 const Calculator = ({ setTheme }) => {
+  const [screen, setScreen] = useState("0");
+  const [prevValue, setPrevValue] = useState("");
+  const [op, setOp] = useState("");
+
   const handleTheme = (theme) => {
     switch (theme) {
       case 1:
@@ -23,12 +27,67 @@ const Calculator = ({ setTheme }) => {
     }
   };
 
+  const calculatorOperations = {
+    "/": (x, y) => x / y,
+    "*": (x, y) => x * y,
+    "+": (x, y) => x + y,
+    "-": (x, y) => x - y,
+    "=": (x, y) => y,
+  };
+
+  const performOperation = () => {
+    let temp = calculatorOperations[op](
+      parseFloat(prevValue),
+      parseFloat(screen)
+    );
+    setOp("");
+    setPrevValue("");
+    setScreen(String(temp));
+  };
+
+  const handleNum = (number) =>
+    setScreen(screen === "0" ? number : screen + number);
+
+  const handleDot = () => {
+    if (!/\./.test(screen)) {
+      setScreen(screen + ".");
+    }
+  };
+
+  const handleReset = () => {
+    setScreen("0");
+    setOp("");
+    setPrevValue("");
+  };
+
+  const handleDel = () => {
+    if (screen) setScreen(screen.slice(0, -1));
+  };
+
+  const handleOperator = (value) => {
+    setOp(value);
+
+    if (op === "") {
+      setPrevValue(screen);
+      setScreen("");
+    } else if (prevValue && op && screen) {
+      performOperation();
+    }
+    // console.log(`prev=${prevValue}, op=${op}, screen=${screen}`);
+  };
+
   return (
     <Container>
       <Wrapper>
         <Header handleTheme={handleTheme} />
-        <Screen />
-        <Keypad />
+        <Screen screen={screen} />
+        <Keypad
+          handleNum={handleNum}
+          handleDot={handleDot}
+          handleReset={handleReset}
+          handleDel={handleDel}
+          handleOperator={handleOperator}
+        />
       </Wrapper>
     </Container>
   );

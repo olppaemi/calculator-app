@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Result, ScreenSection } from "./ScreenElements";
 
-const Screen = () => {
+const Screen = ({ screen }) => {
   return (
     <ScreenSection>
-      <Result>232</Result>
+      <Result>{screen ? screen : "0"}</Result>
     </ScreenSection>
   );
 };
