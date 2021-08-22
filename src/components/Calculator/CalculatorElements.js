@@ -9,6 +9,7 @@ export const Container = styled.main`
 
 export const Wrapper = styled.div`
   width: 540px;
+  max-height: 720px;
 
   @media only Screen and (max-width: 620px) {
     width: 87vw;
