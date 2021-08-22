@@ -24,13 +24,13 @@ Users should be able to:
 
 ### Screenshot
 
-<img src="/screenshot/desktop.png" width="400" height="400">
-<img src="/screenshot/mobile.jpg" width="400" height="400">
+<img src="/screenshot/desktop.png" height="400">
+<img src="/screenshot/mobile.jpg" height="400">
 
 ### Links
 
-- Solution URL: [Solution URL here](https://your-solution-url.com)
-- Live Site URL: [Live site URL here](https://your-live-site-url.com)
+- Solution URL: [Solution URL here](https://www.frontendmentor.io/solutions/mobile-first-site-using-react-and-styled-components-3yYzznI1z)
+- Live Site URL: [Live site URL here](https://fem-calculator-app.vercel.app/)
 
 ## My process
 
